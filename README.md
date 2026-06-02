@@ -74,3 +74,4 @@ The focus is understanding backend development fundamentals rather than building
     - Set up Python virtual environment
     - Installed FastAPI and Uvicorn
     - Created initial project structure
+    - Published project to GitHub
