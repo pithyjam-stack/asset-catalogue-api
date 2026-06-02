@@ -67,11 +67,14 @@ uvicorn main:app --reload
 This project is intentionally being developed as a learning exercise.
 The focus is understanding backend development fundamentals rather than building the fastest possible solution.
 
-## Development Log
-
 ### 2026-06-02
 
-    - Set up Python virtual environment
+    - Successfully created and activated a Python virtual environment
     - Installed FastAPI and Uvicorn
     - Created initial project structure
     - Published project to GitHub
+    - Learned how FastAPI routes work
+    - Learned that URL paths are matched by route decorators such as '/' and '/assets'
+    - Created my first custom API endpoint
+    - Learned that API endpoints can return JSON data
+    - Confirmed that FastAPI automatically converts Python dictionaries and lists into JSON responses
