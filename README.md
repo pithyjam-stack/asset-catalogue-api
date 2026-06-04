@@ -75,6 +75,10 @@ The focus is understanding backend development fundamentals rather than building
     - Published project to GitHub
     - Learned how FastAPI routes work
     - Learned that URL paths are matched by route decorators such as '/' and '/assets'
-    - Created my first custom API endpoint
+    - Created a GET '/assets' endpoint
     - Learned that API endpoints can return JSON data
     - Confirmed that FastAPI automatically converts Python dictionaries and lists into JSON responses
+    - Created a POST '/assets' endpoint
+    - Learned how to test POST requests using FastAPI's '/docs' page
+    - Learned that request bodies are sent as JSON
+    - Confirmed that 'GET /assets' returns assets created by 'POST /assets'
