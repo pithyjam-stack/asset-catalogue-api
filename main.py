@@ -1,5 +1,31 @@
+import sqlite3
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+
+# ----------------------------------------
+# SQLite
+# ----------------------------------------
+
+connection = sqlite3.connect("asset_catalogue.db")
+
+cursor = connection.cursor()
+
+sql = """
+CREATE TABLE IF NOT EXISTS assets(
+    asset_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    version_num INTEGER NOT NULL,
+
+    asset_name TEXT NOT NULL,
+    asset_type TEXT NOT NULL,
+    project TEXT NOT NULL,
+    description TEXT NOT NULL
+)
+"""
+
+cursor.execute(sql)
+
+connection.commit()
+connection.close()
 
 # ----------------------------------------
 # Models
@@ -62,9 +88,36 @@ async def get_assets():
 @app.post("/assets")
 async def create_asset(asset: CreateAsset):
 
+    connection = sqlite3.connect("asset_catalogue.db")
+
+    cursor = connection.cursor()
+
+    insert = """
+    INSERT INTO assets ( 
+    version_num,
+    asset_name, 
+    asset_type, 
+    project, 
+    description)
+
+    VALUES(
+    1,
+    ?,
+    ?,
+    ?,
+    ?
+    )
+    """
+
+    cursor.execute(insert, (asset.name, asset.asset_type, asset.project, asset.description))
+    asset_id = cursor.lastrowid
+
+    connection.commit()
+    connection.close()
+
     full_asset = Asset(
 
-        id = len(assets) + 1,
+        id = asset_id,
         version = 1,
 
         name = asset.name,
@@ -73,8 +126,6 @@ async def create_asset(asset: CreateAsset):
         description = asset.description
 
     )
-
-    assets.append(full_asset)
     
     return full_asset
 

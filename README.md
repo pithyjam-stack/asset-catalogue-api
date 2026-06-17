@@ -104,3 +104,11 @@ The focus is understanding backend development fundamentals rather than building
 - Learned the difference between creating an object and storing it in a collection
 - Learned that asset IDs should not depend on list positions
 - Completed CRUD operations and updating code organization
+
+### 2026-06-16
+
+- Created my first SQLite database
+- Learned the purpose of database connections and cursors
+- Created my first SQL table
+- Learned the difference between Python code and SQL queries
+- Learned how parameterized SQL queries use '?' placeholders to pass values from Python

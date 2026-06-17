@@ -19,8 +19,40 @@ CREATE TABLE IF NOT EXISTS assets(
 )
 """
 
+insert = """
+INSERT INTO assets ( 
+version_num,
+asset_name, 
+asset_type, 
+project, 
+description)
+
+VALUES(
+1,
+'Forest_ambience.wav',
+'audio',
+'Horror Game',
+'Forest ambience loop'
+)
+"""
+
+select_from = """
+SELECT * FROM assets;
+"""
+
+clear_table = """
+DELETE FROM assets;
+"""
+
 # Run query
+cursor.execute(clear_table)
 cursor.execute(sql)
+cursor.execute(insert)
+cursor.execute(select_from)
+rows = cursor.fetchall()
+
+for row in rows:
+    print(f"{row[0]} : {row[1]} : {row[2]} : {row[3]} : {row[4]} : {row[5]}")
 
 # Save changes and close connection
 connection.commit()
